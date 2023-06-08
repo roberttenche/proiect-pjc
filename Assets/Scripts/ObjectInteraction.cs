@@ -5,14 +5,13 @@ using UnityEngine;
 public class ObjectInteraction : MonoBehaviour
 {
     public Canvas ui;
-
     public Camera cam;
 
-    private static Color startcolor;
+    //private static Color startcolor;
     private Transform focusPoint;
     private static Vector3 lastPosition;
     private static Quaternion lastRotation;
-    private static bool focused = false;
+    public static bool focused = false;
     private static Color selectColor = new Color(177f / 255f, 196f / 255f, 201f / 255f);
 
     // Start is called before the first frame update
@@ -43,7 +42,7 @@ public class ObjectInteraction : MonoBehaviour
     {
         if (focused == false)
         {
-            startcolor = GetComponent<Renderer>().material.color;
+            //startcolor = GetComponent<Renderer>().material.color;
             GetComponent<Renderer>().material.color = selectColor;
         }
     }
@@ -52,11 +51,11 @@ public class ObjectInteraction : MonoBehaviour
     {
         if (focused == false)
         {
-            GetComponent<Renderer>().material.color = startcolor;
+            //GetComponent<Renderer>().material.color = startcolor;
         }
     }
 
-    private void OnMouseDown()
+    public void focus()
     {
         if ( focused == false)
         {
@@ -66,7 +65,7 @@ public class ObjectInteraction : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
 
-            GetComponent<Renderer>().material.color = startcolor;
+            //GetComponent<Renderer>().material.color = startcolor;
 
             lastPosition = cam.GetComponent<Transform>().position;
             lastRotation = cam.GetComponent<Transform>().rotation;
@@ -77,5 +76,10 @@ public class ObjectInteraction : MonoBehaviour
             focused = true;
         }
 
+    }
+
+    public bool isFocused()
+    {
+        return focused;
     }
 }
