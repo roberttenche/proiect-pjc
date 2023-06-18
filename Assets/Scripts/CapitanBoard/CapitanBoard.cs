@@ -11,6 +11,7 @@ public class CapitanBoard : MonoBehaviour
 
     public GameObject gridCellPrefab;
     public GameObject submarinePrefab;
+    public string direction = "";
     private GameObject[,] gameGrid;
 
     public GameObject submarineObject;

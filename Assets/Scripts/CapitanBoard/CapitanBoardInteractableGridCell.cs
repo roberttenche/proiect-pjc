@@ -15,9 +15,12 @@ public class CapitanBoardInteractableGridCell : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (transform.parent.parent.GetComponent<ObjectInteraction>().isFocused() == false)
+        Transform captBoard = transform.parent.parent;
+
+
+        if (captBoard.GetComponent<ObjectInteraction>().isFocused() == false)
         {
-            transform.parent.parent.GetComponent<ObjectInteraction>().focus();
+            captBoard.GetComponent<ObjectInteraction>().focus();
             return;
         }
 
@@ -26,9 +29,8 @@ public class CapitanBoardInteractableGridCell : MonoBehaviour
             return;
         }
 
-        GameObject submarineObject = transform.parent.parent.GetComponent<CapitanBoard>().submarineObject;
+        GameObject submarineObject = captBoard.GetComponent<CapitanBoard>().submarineObject;
 
-        Debug.Log(submarineObject.GetComponent<Submarine>().movements);
 
         if (submarineObject.GetComponent<Submarine>().movements == 0)
         {
@@ -48,6 +50,24 @@ public class CapitanBoardInteractableGridCell : MonoBehaviour
         )
         {
             return;
+        }
+
+        if (subX + 1 == grid_x)
+        {
+            captBoard.GetComponent<CapitanBoard>().direction = "EAST";
+        }
+        else if (subX - 1 == grid_x)
+        {
+            captBoard.GetComponent<CapitanBoard>().direction = "WEST";
+        }
+
+        if (subY + 1 == grid_y)
+        {
+            captBoard.GetComponent<CapitanBoard>().direction = "NORTH";
+        }
+        else if (subY - 1 == grid_y)
+        {
+            captBoard.GetComponent<CapitanBoard>().direction = "SOUTH";
         }
 
         submarineObject.transform.SetParent(transform);

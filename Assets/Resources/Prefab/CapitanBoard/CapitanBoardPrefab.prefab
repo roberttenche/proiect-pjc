@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1639185330275047838}
   - component: {fileID: 1639185330275047839}
   m_Layer: 0
-  m_Name: CapitanBoard
+  m_Name: CapitanBoardPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
